@@ -16,13 +16,13 @@ docker pull timonier/npm-proxy-cache:0.4.2
 
 ## Usage
 
-Run your container via `docker run`. The [npm-proxy-cache options](https://github.com/runk/npm-proxy-cache#usage) can be passed as arguments:
+Run the application via `docker run`. The [npm-proxy-cache options](https://github.com/runk/npm-proxy-cache#usage) can be passed as arguments:
 
 ```sh
-docker run -ti --net=host timonier/npm-proxy-cache:0.4.2 --version
+docker run -ti --net host timonier/npm-proxy-cache:0.4.2 --version
 # 0.4.2
 
-docker run -ti --net=host timonier/npm-proxy-cache:0.4.2 -p 8082 -v
+docker run -ti --net host timonier/npm-proxy-cache:0.4.2 -p 8082 -v
 # ->> /tmp/mitm.sock
 # [2016-03-27 13:54:43.270] [INFO] proxy - Listening on localhost:8082 [8]
 # ...
