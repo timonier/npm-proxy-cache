@@ -5,7 +5,7 @@
 Pull the image `timonier/npm-proxy-cache`:
 
 ```sh
-# Get the latest image
+# Get the latest image (version 0.4.2)
 docker pull timonier/npm-proxy-cache
 
 # Or get a specific version
@@ -19,10 +19,18 @@ docker pull timonier/npm-proxy-cache:0.4.2
 Run the application via `docker run`. The [npm-proxy-cache options](https://github.com/runk/npm-proxy-cache#usage) can be passed as arguments:
 
 ```sh
-docker run -ti --net host timonier/npm-proxy-cache:0.4.2 --version
+docker run \
+    -i \
+    -t \
+    --net host \
+    timonier/npm-proxy-cache --version
 # 0.4.2
 
-docker run -ti --net host timonier/npm-proxy-cache:0.4.2 -p 8082 -v
+docker run \
+    -i \
+    -t \
+    --net host \
+    timonier/npm-proxy-cache -p 8082 -v
 # ->> /tmp/mitm.sock
 # [2016-03-27 13:54:43.270] [INFO] proxy - Listening on localhost:8082 [8]
 # ...

@@ -6,24 +6,15 @@ ENV \
 
 RUN set -x \
 
-    # Prepare system
-
-    && apk add -U \
-
     # Install packages
 
-    && apk add \
+    && apk add --no-cache --no-progress \
            nodejs \
 
     # Install npm-proxy-cache
 
     && npm install -g \
-           npm-proxy-cache@$NPM_PROXY_CACHE_VERSION \
-
-    # Clean
-
-    && rm -rf \
-           /var/cache/apk/*
+           npm-proxy-cache@$NPM_PROXY_CACHE_VERSION
 
 COPY ./rootfs /
 
