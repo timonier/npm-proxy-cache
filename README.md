@@ -1,5 +1,7 @@
 # README
 
+HTTP/HTTPS caching proxy for work with npm utility
+
 ## Installation
 
 Pull the image `timonier/npm-proxy-cache`:
@@ -53,3 +55,4 @@ __Note__: Use the script `bin/build` to test your modifications locally.
 * [image "timonier/npm-proxy-cache"](https://hub.docker.com/r/timonier/npm-proxy-cache/)
 * [npm-proxy-cache](https://github.com/runk/npm-proxy-cache)
 * [npm-proxy-cache options](https://github.com/runk/npm-proxy-cache#usage)
+* [timonier/dumb-entrypoint](https://github.com/timonier/dumb-entrypoint)
