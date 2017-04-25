@@ -1,34 +1,35 @@
-FROM alpine:3.4
+FROM node:alpine
 
 LABEL \
     maintainer="Morgan Auchede <morgan.auchede@gmail.com>"
 
 ENV \
-    NPM_PROXY_CACHE_VERSION=0.4.2
+    NPM_PROXY_CACHE_VERSION=latest
 
-RUN set -x \
+RUN set -eux \
 
     # Install packages
 
-    && apk add --no-cache --no-progress --virtual build_deps \
+    && apk add --no-cache --no-progress --virtual BUILD_DEPS \
            curl \
 
     && apk add --no-cache --no-progress \
            ca-certificates \
-           nodejs \
+
+    # Install dumb-entrypoint
+
+    && curl --location "https://github.com/timonier/dumb-entrypoint/raw/master/bin/installer" | INSTALL_DIRECTORY="/usr/sbin" sh -s install \
 
     # Install npm-proxy-cache
 
+    && export $(curl "https://raw.githubusercontent.com/timonier/version-lister/release/generated/npm-proxy-cache/${NPM_PROXY_CACHE_VERSION}" | xargs) \
+
     && npm install -g \
-           npm-proxy-cache@${NPM_PROXY_CACHE_VERSION} \
-
-    # Install timonier/dumb-entrypoint
-
-    && curl -sL "https://github.com/timonier/dumb-entrypoint/raw/master/bin/installer" | INSTALL_DIRECTORY="/usr/sbin" sh -s install \
+           "npm-proxy-cache@${NPM_PROXY_CACHE_VERSION}" \
 
     # Clean
 
     && apk del --no-progress \
-          build_deps
+          BUILD_DEPS
 
-ENTRYPOINT [ "dumb-init" , "--" , "dumb-entrypoint" , "npm-proxy-cache" ]
+ENTRYPOINT [ "dumb-init" , "--" , "dumb-entrypoint" ]

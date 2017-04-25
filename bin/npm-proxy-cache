@@ -1,0 +1,8 @@
+#!/bin/sh
+
+docker run \
+    --interactive="$([ -t 0 ] && echo "true" || echo "false")" \
+    --net host \
+    --rm \
+    --tty="$([ -t 0 ] && echo "true" || echo "false")" \
+    "${IMAGE:-timonier/npm-proxy-cache}:${TAG:-latest}" npm-proxy-cache "$@"
