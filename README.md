@@ -14,7 +14,7 @@ sudo chmod +x /usr/local/bin/npm-proxy-cache
 Linux users can use the [installer](https://github.com/timonier/npm-proxy-cache/blob/master/bin/installer):
 
 ```sh
-curl --location "https://github.com/timonier/npm-proxy-cache/raw/master/bin/installer" | sudo sh -s install
+curl --location "https://github.com/timonier/npm-proxy-cache/raw/master/bin/installer" | sudo sh -s -- install
 ```
 
 ## Usage
@@ -45,7 +45,6 @@ __Note__: Use the script `bin/build` to test your modifications locally.
 
 ## Links
 
-* [command "docker run"](https://docs.docker.com/reference/run/)
 * [image "timonier/npm-proxy-cache"](https://hub.docker.com/r/timonier/npm-proxy-cache/)
 * [runk/npm-proxy-cache](https://github.com/runk/npm-proxy-cache)
 * [timonier/dumb-entrypoint](https://github.com/timonier/dumb-entrypoint)

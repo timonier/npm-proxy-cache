@@ -6,7 +6,7 @@ LABEL \
 ENV \
     NPM_PROXY_CACHE_VERSION=latest
 
-RUN set -eux \
+RUN set -ex \
 
     # Install packages
 
@@ -16,16 +16,18 @@ RUN set -eux \
     && apk add --no-cache --no-progress \
            ca-certificates \
 
-    # Install dumb-entrypoint
-
-    && curl --location "https://github.com/timonier/dumb-entrypoint/raw/master/bin/installer" | INSTALL_DIRECTORY="/usr/sbin" sh -s install \
-
-    # Install npm-proxy-cache
+    # Install runk/npm-proxy-cache
 
     && export $(curl "https://raw.githubusercontent.com/timonier/version-lister/release/generated/npm-proxy-cache/${NPM_PROXY_CACHE_VERSION}" | xargs) \
 
     && npm install -g \
            "npm-proxy-cache@${NPM_PROXY_CACHE_VERSION}" \
+
+    # Install timonier/dumb-entrypoint
+
+    && curl --location "https://github.com/timonier/dumb-entrypoint/raw/master/src/dumb-entrypoint/installer" | INSTALL_DIRECTORY="/usr/sbin" sh -s -- install \
+    && curl --location "https://github.com/timonier/dumb-entrypoint/raw/master/src/dumb-init/installer" | INSTALL_DIRECTORY="/usr/sbin" sh -s -- install \
+    && curl --location "https://github.com/timonier/dumb-entrypoint/raw/master/src/gosu/installer" | INSTALL_DIRECTORY="/usr/sbin" sh -s -- install \
 
     # Clean
 
