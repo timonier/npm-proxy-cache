@@ -4,13 +4,6 @@ HTTP/HTTPS caching proxy for work with npm utility
 
 ## Installation
 
-Copy `bin/npm-proxy-cache` into your executable folder (like `/usr/local/bin` or `$HOME/bin`):
-
-```sh
-sudo curl --location --output /usr/local/bin/npm-proxy-cache "https://github.com/timonier/npm-proxy-cache/raw/master/bin/npm-proxy-cache"
-sudo chmod +x /usr/local/bin/npm-proxy-cache
-```
-
 Linux users can use the [installer](https://github.com/timonier/npm-proxy-cache/blob/master/bin/installer):
 
 ```sh

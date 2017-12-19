@@ -12,4 +12,4 @@ docker run \
     --net host \
     --rm \
     --tty="$([ -t 0 ] && echo "true" || echo "false")" \
-    "${IMAGE:-timonier/npm-proxy-cache}:${TAG:-latest}" npm-proxy-cache "$@"
+    "${IMAGE:-timonier/npm-proxy-cache}:${TAG:-latest}" "$(basename "$0")" "$@"

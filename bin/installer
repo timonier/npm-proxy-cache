@@ -25,7 +25,7 @@ fi
 
 case "$1" in
     install )
-        curl --location --output /usr/local/bin/npm-proxy-cache "https://github.com/timonier/npm-proxy-cache/raw/master/bin/npm-proxy-cache"
+        curl --location --output /usr/local/bin/npm-proxy-cache "https://github.com/timonier/npm-proxy-cache/raw/master/bin/cmd"
         chmod +x /usr/local/bin/npm-proxy-cache
     ;;
 
