@@ -12,4 +12,4 @@ RUN set -ex \
 \
     && export $(curl --location "https://github.com/timonier/version-lister/raw/generated/runk/npm-proxy-cache/${NPM_PROXY_CACHE_VERSION}" | xargs) \
     && npm install -g \
-           "npm-proxy-cache@${NPM_PROXY_CACHE_VERSION}" \
+           "npm-proxy-cache@${NPM_PROXY_CACHE_VERSION}"

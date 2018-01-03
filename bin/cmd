@@ -8,8 +8,19 @@ export PATH=$(echo "${PATH}:/usr/sbin" | awk -v RS=":" -v ORS=":" '!a[$1]++{if (
 # Run command
 
 docker run \
+    $(env | cut -d= -f1 | awk '{print "--env", $1}') \
+    --init \
     --interactive \
     --net host \
     --rm \
     --tty="$([ -t 0 ] && echo "true" || echo "false")" \
+    --volume /etc/group:/etc/group:ro \
+    --volume /etc/localtime:/etc/localtime:ro \
+    --volume /etc/passwd:/etc/passwd:ro \
+    --volume /etc/timezone:/etc/timezone:ro \
+    --volume /run:/run \
+    --volume /tmp:/tmp \
+    --volume "${HOME}:${HOME}" \
+    --volume "${PWD}:${PWD}" \
+    --workdir "${PWD}" \
     "${IMAGE:-timonier/npm-proxy-cache}:${TAG:-latest}" "$(basename "$0")" "$@"
