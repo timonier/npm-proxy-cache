@@ -3,13 +3,12 @@ FROM timonier/node:latest
 LABEL \
     maintainer="Morgan Auchede <morgan.auchede@gmail.com>"
 
-ENV \
-    NPM_PROXY_CACHE_VERSION=latest
-
-RUN set -ex \
+RUN set -e -u -x \
 \
-    # Install runk/npm-proxy-cache
+    # Install npm-proxy-cache
 \
-    && export $(curl --location "https://github.com/timonier/version-lister/raw/generated/runk/npm-proxy-cache/${NPM_PROXY_CACHE_VERSION}" | xargs) \
-    && npm install -g \
-           "npm-proxy-cache@${NPM_PROXY_CACHE_VERSION}"
+    && yarn global add npm-proxy-cache \
+\
+    # Clean
+\
+    && rm -f -r /tmp/* "$(yarn cache dir)"/*
