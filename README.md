@@ -4,8 +4,6 @@ HTTP/HTTPS caching proxy for work with npm utility
 
 ## Installation
 
-Linux users can use the [installer](https://github.com/timonier/npm-proxy-cache/blob/master/bin/installer):
-
 ```sh
 # Define installation folder
 
