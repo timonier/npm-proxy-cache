@@ -1,5 +1,5 @@
-#!/bin/sh
+#!/bin/bash
 set -e -u -x
 cd "$(dirname "$0")"/../src
 
-docker build --tag "${IMAGE:-timonier/npm-proxy-cache}":"${TAG:-latest}" .
+docker build --pull --tag "${IMAGE:-timonier/npm-proxy-cache}":"${TAG:-latest}" .
