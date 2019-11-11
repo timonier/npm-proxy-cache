@@ -25,7 +25,7 @@ case "$1" in
         if [ -t 0 ]; then
             cp cmd "${INSTALL_DIRECTORY}"/npm-proxy-cache
         else
-            curl --location --output "${INSTALL_DIRECTORY}"/npm-proxy-cache "https://github.com/timonier/npm-proxy-cache/raw/master/bin/cmd"
+            curl --location --output "${INSTALL_DIRECTORY}"/npm-proxy-cache "https://gitlab.com/timonier/npm-proxy-cache/raw/master/bin/cmd"
         fi
 
         chmod +x "${INSTALL_DIRECTORY}"/npm-proxy-cache
